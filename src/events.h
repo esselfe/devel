@@ -9,7 +9,7 @@
 extern unsigned int mods, mouse_hold, show_keys, warping;
 extern unsigned long motion_time_last;
 
-void EventsInit (void);
-void EventsCheck (void);
+void EventsInit(void);
+void EventsCheck(void);
 
 #endif /* EVENTS_H */

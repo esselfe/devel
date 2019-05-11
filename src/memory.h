@@ -9,8 +9,8 @@ extern GLint memoroy_uniProj, memoroy_uniView, memoroy_uniModel, memoroy_uniRota
 extern glm::mat4 memoroy_proj, memoroy_view, memoroy_model, memoroy_rotation;
 extern GLfloat flag01_vertices[];
 
-void MemoryInit (void);
-void MemoryDraw (void);
+void MemoryInit(void);
+void MemoryDraw(void);
 
 #endif /* MEMORY_H */
 

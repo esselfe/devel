@@ -10,7 +10,7 @@ extern GLint uniProj_floor, uniView_floor;
 extern glm::mat4 proj_floor, view_floor;
 extern GLfloat vertices_floor[];
 
-void FloorInit (void);
-void FloorDraw (void);
+void FloorInit(void);
+void FloorDraw(void);
 
 #endif /* FLOOR_H */

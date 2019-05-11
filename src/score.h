@@ -3,7 +3,7 @@
 
 
 
-void ScoreLoad (void);
-void ScoreSave (void);
+void ScoreLoad(void);
+void ScoreSave(void);
 
 #endif /* SCORE_H */

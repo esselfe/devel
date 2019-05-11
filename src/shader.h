@@ -15,7 +15,7 @@ extern GLuint sky_vertex_shader, sky_fragment_shader, sky_shader_program;
 extern GLuint thr_vertex_shader, thr_fragment_shader, thr_shader_program;
 extern const GLchar *obj_vertex_source, *obj_fragment_source;
 
-void ShaderInit (void);
-void ShaderCreate (GLuint *shader_program, const GLchar *vertex_source, const GLchar *fragment_source);
+void ShaderInit(void);
+void ShaderCreate(GLuint *shader_program, const GLchar *vertex_source, const GLchar *fragment_source);
 
 #endif /* SHADER_H */

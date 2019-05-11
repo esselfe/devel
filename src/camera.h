@@ -29,7 +29,7 @@ extern GLuint thr_uniOrtho, thr_uniModel;
 extern glm::mat4 thr_model;
 extern GLfloat thr_vertices[];
 
-void CameraInit (void);
-void CameraMove (void);
+void CameraInit(void);
+void CameraMove(void);
 
 #endif /* CAMERA_H */

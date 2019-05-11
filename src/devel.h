@@ -6,7 +6,7 @@
 
 #define sprintf_s snprintf
 
-extern char devel_version[];
+extern char devel_version_string[];
 extern char program_name[];
 #define WINDOW_TITLE_SIZE 128
 extern char window_title[WINDOW_TITLE_SIZE];

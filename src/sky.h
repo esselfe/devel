@@ -9,7 +9,7 @@ extern GLuint sky_uniProj, sky_uniView, sky_uniModel;
 extern glm::mat4 sky_proj, sky_view, sky_model;
 extern GLfloat sky_vertices[];
 
-void SkyInit (void);
-void SkyDraw (void);
+void SkyInit(void);
+void SkyDraw(void);
 
 #endif /* SKY_H */

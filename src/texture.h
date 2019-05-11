@@ -15,6 +15,6 @@ extern GLuint texture_flag01, texture_flag02,
 	texture_moon,
 	texture_sky01, texture_sky02, texture_sky03, texture_sky04;
 
-void TextureInit (void);
+void TextureInit(void);
 
 #endif /* TEXTURE_H */

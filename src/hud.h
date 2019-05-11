@@ -24,7 +24,7 @@ extern char hud_score_mineral_text[HUD_SCORE_TEXT_SIZE];
 extern char hud_element_total_text[HUD_SCORE_TEXT_SIZE];
 
 
-void HudInit (void);
-void HudDraw (void);
+void HudInit(void);
+void HudDraw(void);
 
 #endif /* HUD_H */

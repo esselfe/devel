@@ -18,8 +18,8 @@ extern GLint flag01_uniProj, flag01_uniView, flag01_uniModel, flag01_uniRotation
 extern glm::mat4 flag01_proj, flag01_view, flag01_model, flag01_rotation;
 extern GLfloat flag01_vertices[];
 
-void FlagInit (void);
-void FlagDraw (void);
-void FlagMove (struct Flag *flag);
+void FlagInit(void);
+void FlagDraw(void);
+void FlagMove(struct Flag *flag);
 
 #endif /* FLAG_H */

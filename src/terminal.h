@@ -21,9 +21,9 @@ extern struct Terminal term;
 extern GLfloat terminal_vertices[];
 extern unsigned int terminal_visible, terminal_cursor_blink;
 
-void TerminalInit (void);
-void TerminalCommandParse (void);
-void TerminalKeyParse (char c);
-void TerminalDraw (void);
+void TerminalInit(void);
+void TerminalCommandParse(void);
+void TerminalKeyParse(char c);
+void TerminalDraw(void);
 
 #endif /* TERMINAL_H */

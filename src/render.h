@@ -5,7 +5,7 @@
 
 extern glm::mat4 matrix_ortho, matrix_projection, matrix_view;
 
-void RenderInit (void);
-void Render (void);
+void RenderInit(void);
+void Render(void);
 
 #endif /* RENDER_H */

@@ -20,12 +20,12 @@ std::chrono::high_resolution_clock::time_point t_start, t_now;
 float t_prev, t_prev500, t0;
 unsigned int negative_x, negative_z;
 int rnd, rnd2;
-void DeltaInit (void) {
+void DeltaInit(void) {
 	t_start = std::chrono::high_resolution_clock::now();
 	t_now = t_start;
 }
 
-void DeltaUpdateFly (void) {
+void DeltaUpdateFly(void) {
 	if (!element_flying_total) return;
 	struct Element *elem = root_element_list.first_element;
 	while (1) {
@@ -44,7 +44,7 @@ void DeltaUpdateFly (void) {
 	}
 }
 
-void DeltaUpdate (void) {
+void DeltaUpdate(void) {
 	t_now = std::chrono::high_resolution_clock::now();
 	t0 = std::chrono::duration_cast<std::chrono::duration<float>>(t_now - t_start).count();
 	if (terminal_visible && t0 > t_prev500 + 0.5f) {
@@ -53,7 +53,7 @@ void DeltaUpdate (void) {
 	}
 	if (t0 > t_prev + 1.0) {
 		t_prev = t0;
-		sprintf_s (hud_fps_text, HUD_FPS_TEXT_SIZE, "%u fps", fps);
+		sprintf_s(hud_fps_text, HUD_FPS_TEXT_SIZE, "%u fps", fps);
 		hud_vertices[2] = 5;
 		fps = 0;
 		if ((rnd % 2) == 0) negative_x = !negative_x; // randomize with negatives included
@@ -70,6 +70,6 @@ void DeltaUpdate (void) {
 		flag01.x += (GLfloat)rnd / 100.0f;
 		flag01.z += (GLfloat)rnd2 / 100.0f;
 	
-		DeltaUpdateFly ();
+		DeltaUpdateFly();
 	}
 }

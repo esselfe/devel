@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 
-GLubyte *ImageFromRaw128 (char *filename);
-GLubyte *ImageFromRaw1024 (char *filename);
+GLubyte *ImageFromRaw128(char *filename);
+GLubyte *ImageFromRaw1024(char *filename);
 
 #endif /* IMAGE_H */

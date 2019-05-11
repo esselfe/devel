@@ -21,10 +21,10 @@ struct ObjectList {
 };
 extern struct ObjectList root_object_list;
 
-void ObjectInit (void);
-struct Object *ObjectAdd (const GLchar *vertex_source, const GLchar *fragment_source, GLfloat *vertices, char *texture_img_filename);
-void ObjectPositionSet (struct Object *object, GLfloat x, GLfloat y, GLfloat z);
-void ObjectRotationSet (struct Object *object, GLfloat angle_y);
-void ObjectDraw (void);
+void ObjectInit(void);
+struct Object *ObjectAdd(const GLchar *vertex_source, const GLchar *fragment_source, GLfloat *vertices, char *texture_img_filename);
+void ObjectPositionSet(struct Object *object, GLfloat x, GLfloat y, GLfloat z);
+void ObjectRotationSet(struct Object *object, GLfloat angle_y);
+void ObjectDraw(void);
 
 #endif /* OBJECT_H */

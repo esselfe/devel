@@ -31,11 +31,11 @@ extern GLuint element_uniProj, element_uniView, element_uniModel, element_uniRot
 extern glm::mat4 element_model, element_rotation;
 extern GLfloat element_vertices[];
 
-void ElementInit (void);
-void ElementAdd (unsigned int type);
-void ElementRemove (unsigned int count);
-void ElementPositionSetRandom (struct Element *elem);
-void ElementCollisionCheck (void);
-void ElementDraw (void);
+void ElementInit(void);
+void ElementAdd(unsigned int type);
+void ElementRemove(unsigned int count);
+void ElementPositionSetRandom(struct Element *elem);
+void ElementCollisionCheck(void);
+void ElementDraw(void);
 
 #endif /* ELEMENT_H */

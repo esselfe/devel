@@ -13,9 +13,9 @@
 
 extern unsigned long state, state_mode;
 
-void StateInit (void);
-void StateToggle (unsigned long state_mask);
-void StateModeSet (unsigned long mode);
+void StateInit(void);
+void StateToggle(unsigned long state_mask);
+void StateModeSet(unsigned long mode);
 
 #endif /* STATE_H */
 
