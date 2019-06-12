@@ -4,10 +4,10 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-extern GLuint memoroy_vao, memoroy_vbo;
-extern GLint memoroy_uniProj, memoroy_uniView, memoroy_uniModel, memoroy_uniRotation;
-extern glm::mat4 memoroy_proj, memoroy_view, memoroy_model, memoroy_rotation;
-extern GLfloat flag01_vertices[];
+extern GLuint memory_vao, memory_vbo;
+extern GLint memory_uniProj, memory_uniView, memory_uniModel, memory_uniRotation;
+extern glm::mat4 memory_proj, memory_view, memory_model, memory_rotation;
+extern GLfloat memory_vertices[];
 
 void MemoryInit(void);
 void MemoryDraw(void);

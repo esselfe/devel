@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <chrono>
+#include <sys/sysinfo.h>
 
 #include <GL/glew.h>
 #define GLM_FORCE_RADIANS
@@ -11,6 +12,7 @@
 #include "element.h"
 #include "flag.h"
 #include "hud.h"
+#include "memory.h"
 #include "render.h"
 #include "shader.h"
 #include "state.h"
@@ -20,6 +22,8 @@ std::chrono::high_resolution_clock::time_point t_start, t_now;
 float t_prev, t_prev500, t0;
 unsigned int negative_x, negative_z;
 int rnd, rnd2;
+struct sysinfo sinfo;
+
 void DeltaInit(void) {
 	t_start = std::chrono::high_resolution_clock::now();
 	t_now = t_start;
@@ -71,5 +75,12 @@ void DeltaUpdate(void) {
 		flag01.z += (GLfloat)rnd2 / 100.0f;
 	
 		DeltaUpdateFly();
+	}
+	if (state_mode & STATE_MODE_MEMORY) {
+		sysinfo(&sinfo);
+		memory_vertices[8] = (GLfloat)(sinfo.totalram - sinfo.freeram)/1000000.0;
+	    memory_vertices[15] = memory_vertices[8];
+	    memory_vertices[22] = memory_vertices[8];
+		printf("%f\n", memory_vertices[8]);
 	}
 }

@@ -32,7 +32,7 @@
 #include "terminal.h"
 #include "texture.h"
 
-char devel_version_string[] = "0.2.10.0";
+char devel_version[] = "0.2.10.0";
 char program_name[] = "devel";
 char window_title[WINDOW_TITLE_SIZE];
 unsigned int verbose = 1;
@@ -40,7 +40,7 @@ unsigned int fps;
 unsigned int paused;
 unsigned int fullscreen;
 unsigned int mainloop_end;
-unsigned int winX = 200, winY = 10, winW = 1200, winH = 1000, winWorig = 1200, winHorig = 1000;
+unsigned int winX = 200, winY = 10, winW = 800, winH = 600, winWorig = 800, winHorig = 600;
 SDL_DisplayMode display_mode;
 SDL_Window *window;
 SDL_GLContext context;
@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
 		SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &minor);
 		printf("SDL GL %d.%d\n", major, minor);
 	}
-	sprintf_s(window_title, WINDOW_TITLE_SIZE, "%s %s", program_name, devel_version_string);
+	sprintf_s(window_title, WINDOW_TITLE_SIZE, "%s %s", program_name, devel_version);
 	window = SDL_CreateWindow(window_title, winX, winY + 30, winW, winH, 
 		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 		//SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);

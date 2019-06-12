@@ -37,7 +37,7 @@ GLfloat thr_vertices[] = { // x, y,  r, g, b
 void CameraInit(void) {
 	cam.x = 0.0f;
 	cam.y = 1.2f;
-	cam.z = -5.0f;
+	cam.z = -0.2f;
 	cam.lx = 0.0f;
 	cam.ly = 1.2f;
 	cam.lz = 0.0f;

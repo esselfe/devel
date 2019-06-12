@@ -134,7 +134,7 @@ const GLchar *hudelem_fragment_source =
 "}";
 const GLchar *memory_vertex_source =
 "#version 330 core\n"
-"in vec2 position;"
+"in vec3 position;"
 "in vec4 color;"
 "out vec4 Color;"
 "uniform mat4 proj;"
@@ -142,7 +142,7 @@ const GLchar *memory_vertex_source =
 "uniform mat4 model;"
 "void main() {"
 "Color = color;"
-"gl_Position = proj * view * model  * vec4(position, 0.0f, 1.0f) * vec4(-1.0,1.0,1.0,1.0);"
+"gl_Position = proj * view * model  * vec4(position, 1.0f) * vec4(-1.0,1.0,1.0,1.0);"
 "}";
 const GLchar *memory_fragment_source =
 "#version 330 core\n"

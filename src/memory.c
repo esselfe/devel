@@ -51,6 +51,8 @@ void MemoryInit(void) {
 
 void MemoryDraw(void) {
 	glUseProgram(memory_shader_program);
+	memory_model = glm::scale(glm::mat4(1.0), glm::vec3(1.0,memory_vertices[8],1.0));
+	glUniformMatrix4fv(memory_uniModel, 1, GL_FALSE, glm::value_ptr(memory_model));
 	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(matrix_view));
 	glBindBuffer(GL_ARRAY_BUFFER, memory_vbo);
 	glBindVertexArray(memory_vao);

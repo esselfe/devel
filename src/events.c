@@ -119,8 +119,14 @@ void EventsCheck(void) {
 				if (!(state_mode & STATE_MODE_MEMORY)) StateModeSet(STATE_MODE_MEMORY);
 				break;
 			case SDLK_p:
-				paused = !paused;
-				printf("paused: %u\n", paused);
+				if (mods & MOD_CTRL) {
+					printf("position x:%.03f y:%.03f z:%.03f lx:%.03f ly:%.03f lz:%.03f angle_y:%.03f\n",
+						cam.x, cam.y, cam.z, cam.lx, cam.ly, cam.lz, cam.angle_y);
+				}
+				else {
+					paused = !paused;
+					printf("paused: %u\n", paused);
+				}
 				break;
 			case SDLK_s:
 				StateToggle(STATE_RENDER_SKY);
@@ -233,7 +239,7 @@ void EventsCheck(void) {
 				motion_time_last = event.motion.timestamp;
 				if (warping) {
 					warping = 0;
-		//			printf("warp: %d\n", event.motion.xrel);
+					printf("warp: %d\n", event.motion.xrel);
 //					return;
 				}
 				if (event.motion.xrel < -10) event.motion.xrel = -10;
