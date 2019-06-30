@@ -44,13 +44,13 @@ void Render(void) {
 	if (state & STATE_RENDER_FLOOR) FloorDraw();
 	if (state & STATE_RENDER_FLAG) FlagDraw();
 	if (state & STATE_RENDER_ELEMENT) ElementDraw();
+	if (state & STATE_RENDER_MEMORY) MemoryDraw();
 	if (show_moon) MoonDraw();
 	if (state & STATE_RENDER_SKY) SkyDraw();
 	if (state & STATE_RENDER_HUD) HudDraw();
 	FontDraw();
 	ObjectDraw();
 	if (terminal_visible) TerminalDraw();
-	if (state & STATE_RENDER_MEMORY) MemoryDraw();
 
 	SDL_GL_SwapWindow(window);
 }

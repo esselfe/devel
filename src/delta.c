@@ -78,9 +78,9 @@ void DeltaUpdate(void) {
 	}
 	if (state_mode & STATE_MODE_MEMORY) {
 		sysinfo(&sinfo);
-		memory_vertices[8] = (GLfloat)(sinfo.totalram - sinfo.freeram)/1000000.0;
+		memory_vertices[8] = (GLfloat)1.0/sinfo.totalram * (GLfloat)(sinfo.totalram - sinfo.freeram);
 	    memory_vertices[15] = memory_vertices[8];
 	    memory_vertices[22] = memory_vertices[8];
-		printf("%f\n", memory_vertices[8]);
+		printf("mem used: %f\n", memory_vertices[8]);
 	}
 }

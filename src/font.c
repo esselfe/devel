@@ -148,3 +148,4 @@ void FontDrawText(unsigned int x, unsigned int y, char *text) {
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
 }
+

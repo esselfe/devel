@@ -16,11 +16,17 @@ GLint memory_uniProj, memory_uniView, memory_uniModel, memory_uniRotation;
 glm::mat4 memory_proj, memory_view, memory_model, memory_rotation;
 GLfloat memory_vertices[] = {
 0.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
-0.0f, 5.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
-1.0f, 5.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
-1.0f, 5.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
+0.0f, 1.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
+1.0f, 1.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
+1.0f, 1.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
 1.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
-0.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f
+0.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
+// contour line
+0.0f, 0.01f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f,
+0.0f, 1.0f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f,
+1.0f, 1.0f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f,
+1.0f, 0.01f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f,
+0.0f, 0.01f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f
 };
 
 void MemoryInit(void) {
@@ -39,9 +45,14 @@ void MemoryInit(void) {
 	memory_uniProj = glGetUniformLocation(memory_shader_program, "proj");
 	memory_uniView = glGetUniformLocation(memory_shader_program, "view");
 	memory_uniModel = glGetUniformLocation(memory_shader_program, "model");
+	memory_proj = glm::perspective(glm::radians(45.0f), (GLfloat)winW / (GLfloat)winH, 0.1f, 100.0f);
+	memory_view = glm::lookAt(glm::vec3(cam.x, cam.y, cam.z), glm::vec3(cam.lx, cam.ly, cam.lz),
+        glm::vec3(0.0f, 1.0f, 0.0f));
 	memory_model = glm::translate(glm::mat4(1.0), glm::vec3(0.0f));
-	glUniformMatrix4fv(memory_uniProj, 1, GL_FALSE, glm::value_ptr(matrix_projection));
-	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(matrix_view));
+	glUniformMatrix4fv(memory_uniProj, 1, GL_FALSE, glm::value_ptr(memory_proj));
+//	glUniformMatrix4fv(memory_uniProj, 1, GL_FALSE, glm::value_ptr(matrix_projection));
+	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(memory_view));
+//	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(matrix_view));
 	glUniformMatrix4fv(memory_uniModel, 1, GL_FALSE, glm::value_ptr(memory_model));
 	
 	glBindVertexArray(0);
@@ -51,11 +62,20 @@ void MemoryInit(void) {
 
 void MemoryDraw(void) {
 	glUseProgram(memory_shader_program);
+	glBindVertexArray(memory_vao);
+	glBindBuffer(GL_ARRAY_BUFFER, memory_vbo);
+
+//	memory_proj = glm::perspective(glm::radians(45.0f), (GLfloat)winW / (GLfloat)winH, 0.1f, 100.0f);
+	memory_view = glm::lookAt(glm::vec3(cam.x, cam.y, cam.z), glm::vec3(cam.lx, cam.ly, cam.lz),
+        glm::vec3(0.0f, 1.0f, 0.0f));
+	memory_model = glm::scale(glm::mat4(1.0), glm::vec3(1.0,1.0,1.0));
+//	glUniformMatrix4fv(memory_uniProj, 1, GL_FALSE, glm::value_ptr(memory_proj));
+	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(memory_view));
+	glUniformMatrix4fv(memory_uniModel, 1, GL_FALSE, glm::value_ptr(memory_model));
+	glDrawArrays(GL_LINE_STRIP, 6, 5);
+
 	memory_model = glm::scale(glm::mat4(1.0), glm::vec3(1.0,memory_vertices[8],1.0));
 	glUniformMatrix4fv(memory_uniModel, 1, GL_FALSE, glm::value_ptr(memory_model));
-	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(matrix_view));
-	glBindBuffer(GL_ARRAY_BUFFER, memory_vbo);
-	glBindVertexArray(memory_vao);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
