@@ -1,15 +1,16 @@
 
 CFLAGS= -Wall -Werror -I../extern -I/usr/include/freetype2 -DLINUX -O2 -march=native
 CXXFLAGS= -std=c++11
-LDFLAGS= -lGLEW -lGL -lSDL2 -lXft -lfreetype
+LDFLAGS= -lpthread -lGLEW -lGL -lSDL2 -lXft -lfreetype
 
 OBJDIR=../obj
 OBJS= $(OBJDIR)/camera.o $(OBJDIR)/delta.o $(OBJDIR)/element.o \
 $(OBJDIR)/events.o $(OBJDIR)/flag.o $(OBJDIR)/floor.o $(OBJDIR)/font.o \
-$(OBJDIR)/hud.o $(OBJDIR)/image.o $(OBJDIR)/memory.o $(OBJDIR)/moon.o \
-$(OBJDIR)/object.o $(OBJDIR)/render.o $(OBJDIR)/score.o $(OBJDIR)/shader.o \
-$(OBJDIR)/sky.o $(OBJDIR)/sound.o $(OBJDIR)/state.o $(OBJDIR)/terminal.o \
-$(OBJDIR)/texture.o $(OBJDIR)/vertices.o $(OBJDIR)/devel.o
+$(OBJDIR)/font3D.o $(OBJDIR)/hud.o $(OBJDIR)/image.o $(OBJDIR)/memory.o \
+$(OBJDIR)/moon.o $(OBJDIR)/object.o $(OBJDIR)/render.o $(OBJDIR)/score.o \
+$(OBJDIR)/shader.o $(OBJDIR)/sky.o $(OBJDIR)/sound.o $(OBJDIR)/state.o \
+$(OBJDIR)/terminal.o $(OBJDIR)/texture.o $(OBJDIR)/thread.o \
+$(OBJDIR)/vertices.o $(OBJDIR)/devel.o
 
 default: prepare $(OBJS)
 	g++ $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJS) \
@@ -38,6 +39,9 @@ $(OBJDIR)/floor.o: floor.c floor.h
 
 $(OBJDIR)/font.o: font.c font.h
 	g++ -c $(CFLAGS) $(CXXFLAGS) font.c -o $(OBJDIR)/font.o
+
+$(OBJDIR)/font3D.o: font3D.c font3D.h
+	g++ -c $(CFLAGS) $(CXXFLAGS) font3D.c -o $(OBJDIR)/font3D.o
 
 $(OBJDIR)/hud.o: hud.c hud.h
 	g++ -c $(CFLAGS) $(CXXFLAGS) hud.c -o $(OBJDIR)/hud.o
@@ -77,6 +81,9 @@ $(OBJDIR)/terminal.o: terminal.c terminal.h
 
 $(OBJDIR)/texture.o: texture.c texture.h
 	g++ -c $(CFLAGS) $(CXXFLAGS) texture.c -o $(OBJDIR)/texture.o
+
+$(OBJDIR)/thread.o: thread.c thread.h
+	g++ -c $(CFLAGS) $(CXXFLAGS) thread.c -o $(OBJDIR)/thread.o
 
 $(OBJDIR)/vertices.o: vertices.c vertices.h
 	g++ -c $(CFLAGS) $(CXXFLAGS) vertices.c -o $(OBJDIR)/vertices.o

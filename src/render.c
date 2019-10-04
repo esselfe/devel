@@ -12,6 +12,7 @@
 #include "flag.h"
 #include "floor.h"
 #include "font.h"
+#include "font3D.h"
 #include "hud.h"
 #include "image.h"
 #include "memory.h"
@@ -43,6 +44,7 @@ void Render(void) {
 	
 	if (state & STATE_RENDER_FLOOR) FloorDraw();
 	if (state & STATE_RENDER_FLAG) FlagDraw();
+	Font3DDraw();
 	if (state & STATE_RENDER_ELEMENT) ElementDraw();
 	if (state & STATE_RENDER_MEMORY) MemoryDraw();
 	if (show_moon) MoonDraw();

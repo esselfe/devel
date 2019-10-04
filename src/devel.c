@@ -19,6 +19,7 @@
 #include "flag.h"
 #include "floor.h"
 #include "font.h"
+#include "font3D.h"
 #include "hud.h"
 #include "memory.h"
 #include "moon.h"
@@ -31,8 +32,9 @@
 #include "state.h"
 #include "terminal.h"
 #include "texture.h"
+#include "thread.h"
 
-char devel_version[] = "0.2.10.1";
+char devel_version[] = "0.2.10.4";
 char program_name[] = "devel";
 char window_title[WINDOW_TITLE_SIZE];
 unsigned int verbose = 1;
@@ -87,10 +89,12 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
+	ThreadReadSTDINStart();
 	SoundInit();
 	EventsInit();
 	ShaderInit();
 	FontInit();
+	Font3DInit();
 	TextureInit();
 	DeltaInit();
 	CameraInit();
