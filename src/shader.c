@@ -12,6 +12,7 @@ GLuint element_vertex_shader, element_fragment_shader, element_shader_program;
 GLuint flag01_vertex_shader, flag01_fragment_shader, flag01_shader_program;
 GLuint floor_vertex_shader, floor_fragment_shader, floor_shader_program;
 GLuint font_vertex_shader, font_fragment_shader, font_shader_program;
+GLuint font3D_vertex_shader, font3D_fragment_shader, font3D_shader_program;
 GLuint hud_vertex_shader, hud_fragment_shader, hud_shader_program;
 GLuint hudelem_vertex_shader, hudelem_fragment_shader, hudelem_shader_program;
 GLuint memory_vertex_shader, memory_fragment_shader, memory_shader_program;
@@ -98,6 +99,27 @@ const GLchar *font_fragment_source =
 "uniform sampler2D font_texture;"
 "void main() {"
 	"outColor = texture(font_texture, Texcoord);"
+"}";
+const GLchar *font3D_vertex_source =
+"#version 330 core\n"
+"in vec2 position;"
+"in vec2 texcoord;"
+"out vec2 Texcoord;"
+"uniform mat4 proj;"
+"uniform mat4 view;"
+"uniform mat4 model;"
+"uniform mat4 rotation;"
+"void main() {"
+	"Texcoord = texcoord;"
+	"gl_Position = proj * view * model * rotation * vec4(position, 0.0f, 1.0f) * vec4(-1.0,1.0,1.0,1.0);"
+"}";
+const GLchar *font3D_fragment_source =
+"#version 330 core\n"
+"in vec2 Texcoord;"
+"out vec4 outColor;"
+"uniform sampler2D tex_font3D;"
+"void main() {"
+	"outColor = texture(tex_font3D, Texcoord);"
 "}";
 const GLchar *hud_vertex_source =
 "#version 330 core\n"

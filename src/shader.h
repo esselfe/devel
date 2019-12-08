@@ -7,6 +7,7 @@ extern GLuint element_vertex_shader, element_fragment_shader, element_shader_pro
 extern GLuint flag01_vertex_shader, flag01_fragment_shader, flag01_shader_program;
 extern GLuint floor_vertex_shader, floor_fragment_shader, floor_shader_program;
 extern GLuint font_vertex_shader, font_fragment_shader, font_shader_program;
+extern GLuint font3D_vertex_shader, font3D_fragment_shader, font3D_shader_program;
 extern GLuint hud_vertex_shader, hud_fragment_shader, hud_shader_program;
 extern GLuint hudelem_vertex_shader, hudelem_fragment_shader, hudelem_shader_program;
 extern GLuint memory_vertex_shader, memory_fragment_shader, memory_shader_program;

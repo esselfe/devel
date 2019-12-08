@@ -15,12 +15,16 @@ GLuint memory_vao, memory_vbo;
 GLint memory_uniProj, memory_uniView, memory_uniModel, memory_uniRotation;
 glm::mat4 memory_proj, memory_view, memory_model, memory_rotation;
 GLfloat memory_vertices[] = {
+// used memory
 0.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
 0.0f, 1.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
 1.0f, 1.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
 1.0f, 1.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
 1.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
 0.0f, 0.0f, 0.0f,   0.3f, 0.4f, 0.5f, 1.0f,
+// buffer/cache
+0.0f, 0.0f, 0.01f,   0.8f, 0.4f, 0.5f, 1.0f,
+1.0f, 0.0f, 0.01f,   0.8f, 0.4f, 0.5f, 1.0f,
 // contour line
 0.0f, 0.01f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f,
 0.0f, 1.0f, 0.0f,   0.1f, 0.3f, 0.4f, 1.0f,
@@ -72,7 +76,9 @@ void MemoryDraw(void) {
 //	glUniformMatrix4fv(memory_uniProj, 1, GL_FALSE, glm::value_ptr(memory_proj));
 	glUniformMatrix4fv(memory_uniView, 1, GL_FALSE, glm::value_ptr(memory_view));
 	glUniformMatrix4fv(memory_uniModel, 1, GL_FALSE, glm::value_ptr(memory_model));
-	glDrawArrays(GL_LINE_STRIP, 6, 5);
+	glDrawArrays(GL_LINE_STRIP, 8, 5);
+
+	glDrawArrays(GL_LINES, 6, 2);
 
 	memory_model = glm::scale(glm::mat4(1.0), glm::vec3(1.0,memory_vertices[8],1.0));
 	glUniformMatrix4fv(memory_uniModel, 1, GL_FALSE, glm::value_ptr(memory_model));

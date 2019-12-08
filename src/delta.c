@@ -23,6 +23,7 @@ float t_prev, t_prev500, t0;
 unsigned int negative_x, negative_z;
 int rnd, rnd2;
 struct sysinfo sinfo;
+unsigned long freeram_prev;
 
 void DeltaInit(void) {
 	t_start = std::chrono::high_resolution_clock::now();
@@ -78,9 +79,22 @@ void DeltaUpdate(void) {
 	}
 	if (state_mode & STATE_MODE_MEMORY) {
 		sysinfo(&sinfo);
+		glBindVertexArray(hud_vao);
+	    glBindBuffer(GL_ARRAY_BUFFER, hud_vbo);
 		memory_vertices[8] = (GLfloat)1.0/sinfo.totalram * (GLfloat)(sinfo.totalram - sinfo.freeram);
 	    memory_vertices[15] = memory_vertices[8];
 	    memory_vertices[22] = memory_vertices[8];
-		printf("mem used: %f\n", memory_vertices[8]);
+    	glBufferData(GL_ARRAY_BUFFER, sizeof(hud_vertices), hud_vertices, GL_DYNAMIC_DRAW);
+		glBindVertexArray(0);
+	    glBindBuffer(GL_ARRAY_BUFFER, 0);
+		if (sinfo.freeram > freeram_prev)
+			printf("mem used: %f (-%lu)\n", memory_vertices[8], sinfo.freeram-freeram_prev);
+		else
+			printf("mem used: %f ( %lu)\n", memory_vertices[8], freeram_prev-sinfo.freeram);
+		freeram_prev = sinfo.freeram;
+
+		memory_vertices[43] = (GLfloat)(1.0/sinfo.totalswap) * (sinfo.totalswap - sinfo.freeswap);
+		memory_vertices[50] = memory_vertices[43];
+		printf("swap: %.06f (%ld)\n", memory_vertices[43], sinfo.totalswap - sinfo.freeswap);
 	}
 }
