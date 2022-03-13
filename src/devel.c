@@ -34,7 +34,7 @@
 #include "texture.h"
 #include "thread.h"
 
-char devel_version[] = "0.2.10.4";
+char devel_version[] = "0.3.1";
 char program_name[] = "devel";
 char window_title[WINDOW_TITLE_SIZE];
 unsigned int verbose = 1;

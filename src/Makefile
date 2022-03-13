@@ -13,7 +13,7 @@ $(OBJDIR)/terminal.o $(OBJDIR)/texture.o $(OBJDIR)/thread.o \
 $(OBJDIR)/vertices.o $(OBJDIR)/devel.o
 
 default: prepare $(OBJS)
-	g++ $(CFLAGS) $(CXXFLAGS) $(LDFLAGS) $(OBJS) \
+	g++ $(CFLAGS) $(CXXFLAGS) $(OBJS) $(LDFLAGS) \
 	 -o ../devel
 
 prepare:
