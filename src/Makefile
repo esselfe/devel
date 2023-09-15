@@ -1,5 +1,5 @@
 
-CFLAGS= -Wall -Werror -I../extern -I/usr/include/freetype2 -DLINUX -O2 -march=native
+CFLAGS= -Wall -I../extern -I/usr/include/freetype2 -DLINUX -O2 -march=native
 CXXFLAGS= -std=c++11
 LDFLAGS= -lpthread -lGLEW -lGL -lSDL2 -lXft -lfreetype
 
